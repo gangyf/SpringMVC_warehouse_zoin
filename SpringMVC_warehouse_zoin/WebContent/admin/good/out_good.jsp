@@ -135,9 +135,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 
 <!--pickers initialization-->
-<script src="js/pickers-init.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/pickers-init.js"></script>
 <!--common scripts for all pages-->
-<script src="js/scripts.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/scripts.js"></script>
 
 
 <script type="text/javascript">

@@ -93,7 +93,7 @@
 $(function(){ 
 	$("#btn").click(function(){
 		var email=document.getElementById("email").value;
-		$.post("reset.action?email="+email);		
+		$.post("user/reset.action?email="+email);		
 	}); 
 }); 
 </script>
