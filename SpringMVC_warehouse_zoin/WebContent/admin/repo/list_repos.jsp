@@ -180,9 +180,28 @@
 function del() {
 	var msg = "确定要删除该仓库吗？";
 	if (confirm(msg)==true){
-	return true;
+		$.ajax({  
+	        type: "post",
+	        url: "http://localhost:8080/SpringMVC_warehouse_zoin/allTimes",  
+	        contentType: false,  
+	        cache: false,  
+	        currentType: false,  
+	        processData: false,    
+	        success: function (res) {
+	        	
+	        	if(res=="success"){
+	        		alert("删除成功!");
+	        		return true;
+	        	}
+	        	else{
+	        		alert("仓库中还有货物,删除失败!")
+	        		return false;
+	        	}
+	        	
+	        }
+		});
 	}else{
-	return false;
+		return false;
 	}
 	}
 </script>

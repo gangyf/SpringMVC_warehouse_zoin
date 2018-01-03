@@ -53,7 +53,24 @@ public class RepoController {
 	@RequestMapping("/delete")
 	public String deleteRepo(int id,HttpServletRequest request ,HttpServletResponse response)
 	{
-		repoService.deleteRepo(id);
+		Repository repo = repoService.getSingleRepo(id);
+		try {
+			PrintWriter pw = response.getWriter();
+			if(repo.getGoods()!=null){
+				pw.print("fail");
+			}
+			else{
+				repoService.deleteRepo(id);
+				pw.print("success");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	
 		return "redirect:/repo/getall";
 	}
 	
