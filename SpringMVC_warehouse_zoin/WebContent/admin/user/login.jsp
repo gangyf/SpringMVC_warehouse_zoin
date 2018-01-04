@@ -93,7 +93,7 @@
 $(function(){ 
 	$("#btn").click(function(){
 		var email=document.getElementById("email").value;
-		$.post("user/reset.action?email="+email);		
+		$.post("/SpringMVC_warehouse_zoin/user/reset.action?email="+email);		
 	}); 
 }); 
 </script>

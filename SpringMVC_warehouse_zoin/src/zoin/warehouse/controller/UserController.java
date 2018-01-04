@@ -14,12 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.sun.org.glassfish.external.statistics.annotations.Reset;
 
 import hznu.grade15x.MD5utils.MD5;
 import hznu.grade15x.QRCode.QRCodeUtil;
@@ -27,12 +24,13 @@ import hznu.grade15x.utils.GetRandomString;
 import hznu.grade15x.utils.GoogleValidate;
 import zoin.warehouse.email.MailSenderInfo;
 import zoin.warehouse.email.SimpleMailSender;
-import zoin.warehouse.entity.Good;
-import zoin.warehouse.entity.InAndOutTime;
-import zoin.warehouse.entity.Repository;
 import zoin.warehouse.entity.User;
 import zoin.warehouse.service.ICntTimeService;
 import zoin.warehouse.service.IUserService;
+
+
+
+
 /*
  * 控制用户操作的controller
  */
@@ -53,6 +51,7 @@ public class UserController {
 	//登陆
 	@RequestMapping("/login")
 	public String login(User user,String pwd,HttpServletRequest request){
+		System.out.println("login----------");
 		List<User> allUser = userService.getAllUser();
 		User myUser=null;
 		boolean flag=false;
@@ -122,6 +121,7 @@ public class UserController {
 	    mailInfo.setValidate(true);   
 	    mailInfo.setUserName("a376712116@163.com");   
 	    mailInfo.setPassword("hello123");//您的邮箱密码(授权码)   
+	    
 	    mailInfo.setFromAddress("a376712116@163.com");   
 	    mailInfo.setToAddress(email);   
 	    mailInfo.setSubject("重置密码");   
@@ -171,6 +171,7 @@ public class UserController {
 	@RequestMapping("/validateUsername")
 	public void validateNameAdd(String name,HttpServletRequest request,HttpServletResponse response)
 	{	
+		
 		try {
 			PrintWriter pw = response.getWriter();
 			List<User> users = userService.getAllUser();

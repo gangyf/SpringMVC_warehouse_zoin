@@ -91,6 +91,8 @@
             <th class="hidden-phone">货物数量</th>
             <th class="hidden-phone">供应商</th>
             <th class="hidden-phone">货物产地</th>
+            <th class="hidden-phone">供应商联系方式</th>
+            <th class="hidden-phone">生产日期</th>
         </tr>
         </thead>
         <tbody>
@@ -101,6 +103,8 @@
             <td class="hidden-phone">${good.number}</td>
             <td class="center hidden-phone">${good.supplier }</td>
             <td class="center hidden-phone">${good.area }</td>
+            <td class="center hidden-phone">${good.supplierPhone }</td>
+            <td class="center hidden-phone">${good.manufactureDate }</td>
         </tr>
         </c:forEach>
         </tbody>

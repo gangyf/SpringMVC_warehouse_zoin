@@ -36,7 +36,7 @@ $(function() {
                 lines: {
                     show: true
                 },
-                yaxis: 2
+                yaxis: 1
             }
             ],
                 {

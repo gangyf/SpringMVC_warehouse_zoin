@@ -119,7 +119,7 @@
 							<a href="${pageContext.request.contextPath}/repo/toedit?id=${repo.id}">编辑</a>
 						</td>
 						<td>
-							<a onclick="javascript:return del();" href="${pageContext.request.contextPath}/repo/delete?id=${repo.id}">删除</a>
+							<a onclick="javascript:return del(${repo.id});" href="${pageContext.request.contextPath}/repo/delete?id=${repo.id}">删除</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -177,12 +177,12 @@
 
 
 <script type="text/javascript">
-function del() {
+function del(id) {
 	var msg = "确定要删除该仓库吗？";
 	if (confirm(msg)==true){
 		$.ajax({  
 	        type: "post",
-	        url: "http://localhost:8080/SpringMVC_warehouse_zoin/allTimes",  
+	        url: "http://localhost:8080/SpringMVC_warehouse_zoin/repo/delete_okornot?id="+id,  
 	        contentType: false,  
 	        cache: false,  
 	        currentType: false,  
@@ -200,6 +200,7 @@ function del() {
 	        	
 	        }
 		});
+		return true;
 	}else{
 		return false;
 	}

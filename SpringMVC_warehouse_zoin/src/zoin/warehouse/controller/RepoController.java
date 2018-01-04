@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import zoin.warehouse.entity.Good;
 import zoin.warehouse.entity.Repository;
@@ -49,28 +50,36 @@ public class RepoController {
 		return "admin/repo/list_repos";
 	}
 	
-	//根据id删除一个仓库
-	@RequestMapping("/delete")
-	public String deleteRepo(int id,HttpServletRequest request ,HttpServletResponse response)
-	{
+	@RequestMapping("/delete_okornot")
+	@ResponseBody
+	public void deleteRepookornot(int id,HttpServletRequest request ,HttpServletResponse response){
 		Repository repo = repoService.getSingleRepo(id);
 		try {
 			PrintWriter pw = response.getWriter();
-			if(repo.getGoods()!=null){
+			if(repo.getGoods()!=null&&repo.getGoods().size()!=0){
 				pw.print("fail");
 			}
 			else{
-				repoService.deleteRepo(id);
 				pw.print("success");
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+	}
 	
+	
+	
+	//根据id删除一个仓库
+	@RequestMapping("/delete")
+	public String deleteRepo(int id,HttpServletRequest request ,HttpServletResponse response)
+	{	
+		try {
+			repoService.deleteRepo(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		return "redirect:/repo/getall";
 	}
 	
